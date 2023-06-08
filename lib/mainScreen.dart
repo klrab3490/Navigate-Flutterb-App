@@ -1,11 +1,15 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:sample_project1/mapScreen.dart';
 
 class MainScreen extends StatelessWidget {
+  const MainScreen({super.key});
+
   void _navigateToMapScreen(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => MapScreen()),
+      MaterialPageRoute(builder: (context) => const MapScreen()),
     );
   }
 
@@ -13,24 +17,24 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Navigate me'),
+        title: const Text('Navigate me'),
       ),
-      body: Container(
-        
-      child: Column(
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [ Image.asset('assets/image/images.jpg',
-        width: 400,
-        height: 400,)],
-         ),
-          // Add your content here, such as icons and text
-        ),
+        children: [
+          Image.asset(
+            'assets/image/images.jpg',
+            width: 400,
+            height: 400,
+          )
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           _navigateToMapScreen(context);
         },
         backgroundColor: Colors.green, // Set the background color
-        child: Icon(Icons.map),
+        child: const Icon(Icons.map),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

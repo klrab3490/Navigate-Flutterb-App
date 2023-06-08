@@ -1,3 +1,4 @@
+// ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
@@ -6,14 +7,17 @@ import 'package:geolocator/geolocator.dart';
 import 'package:sample_project1/search_Screen.dart';
 
 class MapScreen extends StatefulWidget {
+  const MapScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _MapScreenState createState() => _MapScreenState();
 }
 
 class _MapScreenState extends State<MapScreen> {
-  MapController _mapController = MapController();
+  final MapController _mapController = MapController();
   LatLng? _currentLocation;
-  List<Marker> _markers = [];
+  final List<Marker> _markers = [];
 
   @override
   void initState() {
@@ -42,27 +46,27 @@ class _MapScreenState extends State<MapScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title:  Text(
-                'Sahrdaya College Of Engineering and Technology',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+          title: const Text(
+            'Sahrdaya College Of Engineering and Technology',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-             
               Text('Latitude: ${point.latitude}'),
               Text('Longitude: ${point.longitude}'),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               TextButton(
                 onPressed: () {
                   Navigator.pop(context); // Close the dialog
-                  _navigateToSearchScreen(point); // Navigate to the SearchScreen
+                  _navigateToSearchScreen(
+                      point); // Navigate to the SearchScreen
                 },
-                child: Text('View Details'),
+                child: const Text('View Details'),
               ),
             ],
           ),
@@ -75,12 +79,13 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Map Screen'),
+        title: const Text('Map Screen'),
       ),
       body: FlutterMap(
         mapController: _mapController,
         options: MapOptions(
-          center: _currentLocation ?? LatLng(10.359035913839127, 76.28606936433637),
+          center:
+              _currentLocation ?? LatLng(10.359035913839127, 76.28606936433637),
           zoom: 13.0,
           onTap: (point, LatLng? tapPoint) {
             if (tapPoint != null) {
@@ -91,7 +96,7 @@ class _MapScreenState extends State<MapScreen> {
         children: [
           TileLayer(
             urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            subdomains: ['a', 'b', 'c'],
+            subdomains: const ['a', 'b', 'c'],
           ),
           MarkerLayer(markers: _markers),
         ],

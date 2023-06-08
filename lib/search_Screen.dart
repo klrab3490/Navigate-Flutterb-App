@@ -1,20 +1,20 @@
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:sample_project1/DecinialBlock.dart';
 import 'package:sample_project1/MainBlock.dart';
 import 'package:sample_project1/BioBlock.dart';
 
-
 class SearchScreen extends StatelessWidget {
   final LatLng point;
 
-  const SearchScreen({required this.point});
+  const SearchScreen({super.key, required this.point});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Details'),
+        title: const Text('Details'),
       ),
       body: Stack(
         children: [
@@ -36,56 +36,55 @@ class SearchScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MainBlock(
+                        builder: (context) => const MainBlock(
                           blockName: 'Main Block',
                         ),
                       ),
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                      fixedSize: Size(350, 60),
+                      fixedSize: const Size(350, 60),
                       backgroundColor: Colors.black87),
-                  child: Text(
+                  child: const Text(
                     'Main Block',
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Decinial(
+                        builder: (context) => const Decinial(
                           blockName: 'Decineal Block',
                         ),
                       ),
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                      fixedSize: Size(350, 60),
+                      fixedSize: const Size(350, 60),
                       backgroundColor: Colors.black87),
-                  child: Text('Decinneal Block'),
+                  child: const Text('Decinneal Block'),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => BioBlock(
+                        builder: (context) => const BioBlock(
                           blockName: 'Bio Block',
                         ),
                       ),
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                      fixedSize: Size(350, 60),
+                      fixedSize: const Size(350, 60),
                       backgroundColor: Colors.black87),
-                  child: Text('Bio Block'),
+                  child: const Text('Bio Block'),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
               ],
-              
             ),
           ),
         ],

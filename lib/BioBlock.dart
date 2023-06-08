@@ -1,9 +1,11 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class BioBlock extends StatelessWidget {
   final String blockName;
 
-  const BioBlock({required this.blockName});
+  const BioBlock({super.key, required this.blockName});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,7 +13,7 @@ class BioBlock extends StatelessWidget {
         title: Text(blockName),
       ),
       body: ListView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         children: const [
           Text(
             'Ground Floor',
