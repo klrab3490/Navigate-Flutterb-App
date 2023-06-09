@@ -1,10 +1,11 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: file_names
 
+import 'package:flutter/material.dart';
 
 class MainBlock extends StatelessWidget {
   final String blockName;
 
-  const MainBlock({required this.blockName});
+  const MainBlock({super.key, required this.blockName});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,19 +42,16 @@ class MainBlock extends StatelessWidget {
             leading: Icon(Icons.grade),
             title: Text('Academic office'),
           ),
+          ListTile(leading: Icon(Icons.people), title: Text('Visitors Room')),
           ListTile(
-            leading: Icon(Icons.people),
-            title: Text('Visitors Room')
-          ),
-           ListTile(
             leading: Icon(Icons.wash),
             title: Text('WashRoom'),
           ),
-           ListTile(
+          ListTile(
             leading: Icon(Icons.stairs),
             title: Text('Stairs'),
           ),
-           ListTile(
+          ListTile(
             leading: Icon(Icons.elevator),
             title: Text('Lift'),
           ),
@@ -64,19 +62,19 @@ class MainBlock extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-           ListTile(
+          ListTile(
             leading: Icon(Icons.computer),
             title: Text('Computer Lab'),
           ),
-           ListTile(
+          ListTile(
             leading: Icon(Icons.people),
-            title: Text('StaffRoom'),          
-            ),
-            ListTile(
+            title: Text('StaffRoom'),
+          ),
+          ListTile(
             leading: Icon(Icons.class_),
-            title: Text('1st Year'),          
-            ),
-             Text(
+            title: Text('1st Year'),
+          ),
+          Text(
             ' Floor 2',
             style: TextStyle(
               fontSize: 25,
@@ -85,30 +83,29 @@ class MainBlock extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.class_),
-            title: Text('1st Year'),          
-            ),
-           ListTile(
+            title: Text('1st Year'),
+          ),
+          ListTile(
             leading: Icon(Icons.computer),
             title: Text('Computer Lab'),
           ),
-          
-            ListTile(
+          ListTile(
             leading: Icon(Icons.science),
-            title: Text('Chemistry Lab'),          
-            ),
-            ListTile(
+            title: Text('Chemistry Lab'),
+          ),
+          ListTile(
             leading: Icon(Icons.microwave),
-            title: Text('Physics Lab'),          
-            ),
-             ListTile(
+            title: Text('Physics Lab'),
+          ),
+          ListTile(
             leading: Icon(Icons.wash),
             title: Text('WashRoom'),
           ),
-           ListTile(
+          ListTile(
             leading: Icon(Icons.stairs),
             title: Text('Stairs'),
           ),
-           ListTile(
+          ListTile(
             leading: Icon(Icons.elevator),
             title: Text('Lift'),
           ),

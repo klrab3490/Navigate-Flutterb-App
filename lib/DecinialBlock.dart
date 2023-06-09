@@ -1,9 +1,11 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class Decinial extends StatelessWidget {
   final String blockName;
 
-  const Decinial({required this.blockName});
+  const Decinial({super.key, required this.blockName});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,8 +13,8 @@ class Decinial extends StatelessWidget {
         title: Text(blockName),
       ),
       body: ListView(
-        padding: EdgeInsets.all(16),
-        children: [
+        padding: const EdgeInsets.all(16),
+        children: const [
           Text(
             'Ground Floor',
             style: TextStyle(
