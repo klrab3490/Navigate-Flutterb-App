@@ -40,36 +40,36 @@ class _chatbotScreenState extends State<chatbotScreen> {
     ),
     'jasmine hall': ChatResponse(
       response: 'It is in the Ground floor of the main block.',
-      imagePath: 'assets/images/jasmine.jpg',
+      imagePath: 'assets/image/jasmine.jpg',
     ),
     'placement cell': ChatResponse(
       response: 'It is in the Ground floor of the main block, near to the Jasmine Hall.',
-      imagePath: 'assets/images/placement.jpg',
+      imagePath: 'assets/image/placement.jpg',
     ),
     'administration office': ChatResponse(
       response: 'It is in the Ground floor of the main block, near to the Front Office.',
-      imagePath: 'assets/images/Administration.jpg',
+      imagePath: 'assets/image/Administration.jpg',
     ),
     'physics lab': ChatResponse(
       response: 'It is on the second floor of the main block.',
-      imagePath: 'assets/images/physics.jpg',
+      imagePath: 'assets/image/physics.jpg',
     ),
     'chemistry lab': ChatResponse(
       response: 'It is on the second floor of the main block.',
-      imagePath: 'assets/images/chemistry.jpg',
+      imagePath: 'assets/image/chemistry.jpg',
     ),
     'first year classes': ChatResponse(
       response: 'They are in the first and second floors of the main block.',
-      imagePath: 'assets/images/classroom.jpg',
+      imagePath: 'assets/image/classroom.jpg',
     ),
     'stairs': ChatResponse(
       response: 'Stairs and lifts are available in every block.',
-      imagePath: 'assets/images/stair.jpg',
+      imagePath: 'assets/image/stair.jpg',
       
     ),
     'lift': ChatResponse(
       response: 'Stairs and lifts are available in every block.',
-      imagePath: 'assets/images/lift.jpg',
+      imagePath: 'assets/image/lift.jpg',
       
     ),
     // Add more questions and their corresponding responses
