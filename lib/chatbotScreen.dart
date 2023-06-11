@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, camel_case_types, library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 
 class ChatMessage {
@@ -23,6 +25,8 @@ class ChatResponse {
 }
 
 class chatbotScreen extends StatefulWidget {
+  const chatbotScreen({super.key});
+
   @override
   _chatbotScreenState createState() => _chatbotScreenState();
 }
@@ -43,11 +47,13 @@ class _chatbotScreenState extends State<chatbotScreen> {
       imagePath: 'assets/image/jasmine.jpg',
     ),
     'placement cell': ChatResponse(
-      response: 'It is in the Ground floor of the main block, near to the Jasmine Hall.',
+      response:
+          'It is in the Ground floor of the main block, near to the Jasmine Hall.',
       imagePath: 'assets/image/placement.jpg',
     ),
     'administration office': ChatResponse(
-      response: 'It is in the Ground floor of the main block, near to the Front Office.',
+      response:
+          'It is in the Ground floor of the main block, near to the Front Office.',
       imagePath: 'assets/image/Administration.jpg',
     ),
     'physics lab': ChatResponse(
@@ -65,12 +71,10 @@ class _chatbotScreenState extends State<chatbotScreen> {
     'stairs': ChatResponse(
       response: 'Stairs and lifts are available in every block.',
       imagePath: 'assets/image/stair.jpg',
-      
     ),
     'lift': ChatResponse(
       response: 'Stairs and lifts are available in every block.',
       imagePath: 'assets/image/lift.jpg',
-      
     ),
     // Add more questions and their corresponding responses
   };
@@ -115,9 +119,11 @@ class _chatbotScreenState extends State<chatbotScreen> {
                 ChatMessage chatMessage = chatMessages[index];
                 return ListTile(
                   title: Text(chatMessage.message),
-                  leading: chatMessage.isUserMessage ? null : chatMessage.imagePath != null
-                      ? Image.asset(chatMessage.imagePath!)
-                      : null,
+                  leading: chatMessage.isUserMessage
+                      ? null
+                      : chatMessage.imagePath != null
+                          ? Image.asset(chatMessage.imagePath!)
+                          : null,
                 );
               },
             ),
@@ -125,12 +131,10 @@ class _chatbotScreenState extends State<chatbotScreen> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: TextField(
-              controller: messageController,
-              onSubmitted: handleUserMessage
-            ),
+                controller: messageController, onSubmitted: handleUserMessage),
           ),
         ],
-    ),
+      ),
     );
   }
 }
