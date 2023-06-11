@@ -95,16 +95,15 @@ class SearchScreen extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) =>  chatbotScreen(),
+              builder: (context) => const chatbotScreen(),
             ),
           );
         },
         child: const CircleAvatar(
-        backgroundImage:AssetImage('assets/image/download.png'),
-        radius: 40,
+          backgroundImage: AssetImage('assets/image/download.png'),
+          radius: 40,
         ),
       ),
-
     );
   }
 }
