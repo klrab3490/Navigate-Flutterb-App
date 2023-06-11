@@ -4,6 +4,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:sample_project1/DecinialBlock.dart';
 import 'package:sample_project1/MainBlock.dart';
 import 'package:sample_project1/BioBlock.dart';
+import 'package:sample_project1/chatbotScreen.dart';
 
 class SearchScreen extends StatelessWidget {
   final LatLng point;
@@ -89,6 +90,21 @@ class SearchScreen extends StatelessWidget {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>  chatbotScreen(),
+            ),
+          );
+        },
+        child: const CircleAvatar(
+        backgroundImage:AssetImage('assets/image/download.png'),
+        radius: 40,
+        ),
+      ),
+
     );
   }
 }
