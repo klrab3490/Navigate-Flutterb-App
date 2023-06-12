@@ -101,8 +101,9 @@ class SearchScreen extends StatelessWidget {
         },
         child: const CircleAvatar(
           backgroundImage: AssetImage('assets/image/download.png'),
-          radius: 40,
+          radius: 150,
         ),
+        backgroundColor: Colors.white,
       ),
     );
   }

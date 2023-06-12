@@ -25,7 +25,7 @@ class ChatResponse {
 }
 
 class chatbotScreen extends StatefulWidget {
-  const chatbotScreen({super.key});
+  const chatbotScreen({Key? key}) : super(key: key);
 
   @override
   _chatbotScreenState createState() => _chatbotScreenState();
@@ -42,42 +42,83 @@ class _chatbotScreenState extends State<chatbotScreen> {
     'bye': ChatResponse(
       response: 'Goodbye!',
     ),
+     'sahrdaya entrance': ChatResponse(
+      response: 'At the entrance path of sahrdaya there are three stands where three holy Books are kept',
+      imagePath: 'assets/image/sahrdaya.jpg',
+    ),
     'jasmine hall': ChatResponse(
-      response: 'It is in the Ground floor of the main block.',
+      response: 'Please go to the right side of the ground floor in the main block',
       imagePath: 'assets/image/jasmine.jpg',
     ),
     'placement cell': ChatResponse(
-      response:
-          'It is in the Ground floor of the main block, near to the Jasmine Hall.',
+      response: 'It is in the Ground floor of the main block, near to the Jasmine Hall.',
       imagePath: 'assets/image/placement.jpg',
     ),
     'administration office': ChatResponse(
-      response:
-          'It is in the Ground floor of the main block, near to the Front Office.',
+      response: 'you can find the administration office in the left side of the ground floor',
       imagePath: 'assets/image/Administration.jpg',
     ),
+    'academic office': ChatResponse(
+      response: 'You can find the Academic Office on the right side of the ground floor.',
+      imagePath: 'assets/images/academicoffice.jpg',
+    ),
+    'first year staff room': ChatResponse(
+      response: 'Please go to the first floor of the main block and then take a right to find the First Year Staff Room.',
+      imagePath: 'assets/images/firstyearstaffroom.jpg',
+    ),
+    'vice principal\'s office': ChatResponse(
+      response: 'Please go to the first floor of the main block and take a left to find the Vice Principal\'s Office.',
+      imagePath: 'assets/images/viceprincipalsoffice.jpg',
+    ),
     'physics lab': ChatResponse(
-      response: 'It is on the second floor of the main block.',
+      response: 'Please go to the second floor of the main block and take left where you will see the physics lab',
       imagePath: 'assets/image/physics.jpg',
     ),
     'chemistry lab': ChatResponse(
-      response: 'It is on the second floor of the main block.',
+      response: 'Please go to the second floor of the main block and take right where you will see the chemistry lab',
       imagePath: 'assets/image/chemistry.jpg',
     ),
     'first year classes': ChatResponse(
       response: 'They are in the first and second floors of the main block.',
       imagePath: 'assets/image/classroom.jpg',
     ),
-    'stairs': ChatResponse(
-      response: 'Stairs and lifts are available in every block.',
-      imagePath: 'assets/image/stair.jpg',
+    'accenture lab': ChatResponse(
+      response: 'Accenture Lab is located on the right side of the ground floor in the Bio Block.',
+    ),
+    'ce dept': ChatResponse(
+      response: 'The CE Department is located on the right side of the first floor in the Decineal Block.',
+    ),
+    'eee': ChatResponse(
+      response: 'The EEE Department is located on the left side of the first floor in the Decineal Block.',
+    ),
+    'cs dept': ChatResponse(
+      response: 'The CS Department is located on the second floor in the Decineal Block.',
+    ),
+    'cs hod': ChatResponse(
+      response: 'The HOD\'s room for CS Department is located on the second floor in the Decineal Block.',
     ),
     'lift': ChatResponse(
-      response: 'Stairs and lifts are available in every block.',
-      imagePath: 'assets/image/lift.jpg',
+      response: 'You can find the lift in the left corner of the ground floor.',
     ),
+    'thank you':ChatResponse(
+      response: "it's my pleasure to help you,just text me if you need any more help.",
+    ),
+    'thank you pluto':ChatResponse(
+      response: "it's my pleasure !!",
+    ),
+
     // Add more questions and their corresponding responses
   };
+
+  @override
+  void initState() {
+    super.initState();
+    // Add an introductory message from the chatbot
+    chatMessages.add(ChatMessage(
+      message: "Chatbot: Welcome to Sahrdaya!  I'm PLUTO ,your virtual assistant you can ask questions i will try to sort out them",
+      isUserMessage: false,
+    ));
+  }
 
   void handleUserMessage(String message) {
     setState(() {
@@ -87,7 +128,7 @@ class _chatbotScreenState extends State<chatbotScreen> {
       ));
       String response = getChatbotResponse(message);
       chatMessages.add(ChatMessage(
-        message: "Chatbot: $response",
+        message: "BOT : $response",
         isUserMessage: false,
         imagePath: questionResponses[message.toLowerCase()]?.imagePath,
       ));
@@ -104,11 +145,25 @@ class _chatbotScreenState extends State<chatbotScreen> {
     }
   }
 
+   void viewImage(String imagePath) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            child: Image.asset(imagePath),
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Chatbot'),
+        title: const Text('Sahrdaya BOT'),
       ),
       body: Column(
         children: [
@@ -118,11 +173,26 @@ class _chatbotScreenState extends State<chatbotScreen> {
               itemBuilder: (BuildContext context, int index) {
                 ChatMessage chatMessage = chatMessages[index];
                 return ListTile(
-                  title: Text(chatMessage.message),
+                  title: Text(chatMessage.message,
+                  style: TextStyle(
+                    color: chatMessage.isUserMessage
+                    ? Colors.blue
+                    : Colors.black87,
+                  ),
+                ),
                   leading: chatMessage.isUserMessage
                       ? null
                       : chatMessage.imagePath != null
-                          ? Image.asset(chatMessage.imagePath!)
+                        ? GestureDetector(
+                          onTap: ()=> viewImage(
+                            chatMessage.imagePath!),
+                        
+                          child: Image.asset(
+                            chatMessage.imagePath!,
+                            width:150,
+                            height:200,
+                            ),
+                        )
                           : null,
                 );
               },
@@ -131,7 +201,16 @@ class _chatbotScreenState extends State<chatbotScreen> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: TextField(
-                controller: messageController, onSubmitted: handleUserMessage),
+              controller: messageController,
+              onSubmitted: handleUserMessage,
+              decoration: InputDecoration(
+                hintText: 'Ask a question...',
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.send),
+                  onPressed: () => handleUserMessage(messageController.text),
+                ),
+              ),
+            ),
           ),
         ],
       ),
