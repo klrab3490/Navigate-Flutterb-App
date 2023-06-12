@@ -99,11 +99,11 @@ class SearchScreen extends StatelessWidget {
             ),
           );
         },
+        backgroundColor: Colors.white,
         child: const CircleAvatar(
           backgroundImage: AssetImage('assets/image/download.png'),
           radius: 150,
         ),
-        backgroundColor: Colors.white,
       ),
     );
   }
